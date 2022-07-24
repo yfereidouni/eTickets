@@ -139,7 +139,7 @@ public class AppDBInitializer
                     {
                         Name = "Life",
                         Description = "This is the Life movie description",
-                        Price = 29.50,
+                        Price = 27.50,
                         ImageURL = "http://dotnethow.net/images/movies/movie-3.jpeg",
                         StartDate = DateTime.Now.AddDays(-10),
                         EndDate = DateTime.Now.AddDays(10),
@@ -175,7 +175,7 @@ public class AppDBInitializer
                     {
                         Name = "Race",
                         Description = "This is the Race movie description",
-                        Price = 39.50,
+                        Price = 41.50,
                         ImageURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
                         StartDate = DateTime.Now.AddDays(-10),
                         EndDate = DateTime.Now.AddDays(-5),
@@ -187,7 +187,7 @@ public class AppDBInitializer
                     {
                         Name = "Scoob",
                         Description = "This is the Scoob movie description",
-                        Price = 39.50,
+                        Price = 35.50,
                         ImageURL = "http://dotnethow.net/images/movies/movie-7.jpeg",
                         StartDate = DateTime.Now.AddDays(-10),
                         EndDate = DateTime.Now.AddDays(-2),
@@ -199,6 +199,7 @@ public class AppDBInitializer
                     {
                         Name = "Cold Soles",
                         Description = "This is the Cold Soles movie description",
+                        Price = 28.50,
                         ImageURL = "http://dotnethow.net/images/movies/movie-8.jpeg",
                         StartDate = DateTime.Now.AddDays(3),
                         EndDate = DateTime.Now.AddDays(20),
