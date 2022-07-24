@@ -10,23 +10,26 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Actor_Movie>().HasKey(am=> new 
-        {
-            am.ActorId,
-            am.MovieId
-        });
+        #region Way-1
+        //modelBuilder.Entity<Actor>(c =>
+        //{
+        //    c.HasMany(t => t.Movies).WithMany(t => t.Actors).UsingEntity<Actor_Movie>(
+        //        c => c.HasOne(t => t.Movie).WithMany().HasForeignKey(t => t.MovieId),
+        //        d => d.HasOne(t => t.Actor).WithMany().HasForeignKey(t => t.ActorId));
+        //});
+        #endregion
 
-        modelBuilder.Entity<Actor_Movie>()
-            .HasOne(m => m.Movie)
-            .WithMany(am => am.Actors_Movies)
-            .HasForeignKey(m => m.MovieId);
-
-
-        modelBuilder.Entity<Actor_Movie>()
-            .HasOne(m => m.Actor)
-            .WithMany(am => am.Actors_Movies)
-            .HasForeignKey(m => m.ActorId);
-
+        #region Way-2
+        //modelBuilder.Entity<Actor_Movie>().HasKey(am => new
+        //{
+        //    am.ActorId,
+        //    am.MovieId
+        //});
+        //modelBuilder.Entity<Actor_Movie>()
+        //    .HasOne(m => m.Movie).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.MovieId);
+        //modelBuilder.Entity<Actor_Movie>()
+        //    .HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorId);
+        #endregion
 
         base.OnModelCreating(modelBuilder);
     }

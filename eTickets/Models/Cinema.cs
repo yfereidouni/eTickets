@@ -13,5 +13,5 @@ public class Cinema
 
     //Relationships
     public List<Movie> Movies { get; set; }
-
+    //public int MovieId { get; set; }
 }

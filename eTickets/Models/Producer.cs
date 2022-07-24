@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿//using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models;
 
 public class Producer
 {
-    [Key]
+    //[Key]
     public int Id { get; set; }
  
     public string ProfilePictureURL { get; set; }
@@ -13,4 +13,5 @@ public class Producer
 
     //Relationships
     public List<Movie> Movies { get; set; }
+    //public int MovieId { get; set; }
 }

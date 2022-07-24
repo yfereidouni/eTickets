@@ -4,7 +4,7 @@ namespace eTickets.Models;
 
 public class Actor
 {
-    [Key]
+    //[Key]
     public int Id { get; set; }
 
     public string ProfilePictureURL { get; set; }
@@ -12,5 +12,6 @@ public class Actor
     public string Bio { get; set; }
 
     //Relationships
-    public List<Actor_Movie> Actor_Movies { get; set; }
+    public List<Actor_Movie> Actors_Movies { get; set; }
+    //public int Actor_MovieId { get; set; }
 }
