@@ -11,6 +11,13 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+//Database Auto-Migration -----------------------------------------------------------
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+    context.Database.Migrate();
+}
 //SeedDatabase ----------------------------------------------------------------------
 await AppDBInitializer.Seed(app);
 //-----------------------------------------------------------------------------------
