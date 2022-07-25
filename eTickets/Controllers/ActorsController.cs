@@ -1,4 +1,5 @@
 ﻿using eTickets.Data.Services;
+using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,4 +19,19 @@ public class ActorsController : Controller
         var actors = await _actorsService.GetAll();
         return View(actors);
     }
+
+    // GET: Actors/Create
+    public IActionResult Create()
+    {
+        return View(new Actor());
+    }
+
+    [HttpPost]
+    public IActionResult Create(Actor actor)
+    {
+        _actorsService.Add(actor);
+        return RedirectToAction("Index");
+    }
+
+
 }

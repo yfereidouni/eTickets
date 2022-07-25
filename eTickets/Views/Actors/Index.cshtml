@@ -8,7 +8,7 @@
     <div class="col-md-8 offset-md-2">
         <table class="table">
             <thead>
-                <tr class="text-center">                    
+                <tr class="text-center">
                     <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
                     <th>@Html.DisplayNameFor(model => model.FullName)</th>
                     <th>@Html.DisplayNameFor(model => model.Bio)</th>
@@ -20,7 +20,7 @@
                 {
                     <tr>
                         <td class="align-middle">
-                            <img class="img-thumbnail rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width:150px;" >
+                            <img class="img-thumbnail rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width:150px;">
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.FullName)
@@ -39,3 +39,8 @@
         </table>
     </div>
 </div>
+
+<div style="float:right; position:absolute; right:2vw; bottom:3vh;" class="position-sticky fixed-bottom text-white">
+    <a asp-controller="Actors" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add New</a>
+</div>
+
