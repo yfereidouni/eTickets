@@ -16,7 +16,7 @@ public class ActorsController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var actors = await _actorsService.GetAll();
+        var actors = await _actorsService.GetAllAsync();
         return View(actors);
     }
 
@@ -32,7 +32,7 @@ public class ActorsController : Controller
         //ModelState.Remove("Actors_Movies");
         if (ModelState.IsValid)
         {
-            _actorsService.Add(actor);
+            _actorsService.AddAsync(actor);
             return RedirectToAction(nameof(Index));
         }
 
@@ -43,11 +43,58 @@ public class ActorsController : Controller
     [HttpGet]
     public async Task<IActionResult> Details(int id)
     {
-        var actor = _actorsService.GetById(id);
-        
-        if (actor == null) 
-            return View("Empty");
+        var actor = await _actorsService.GetByIdAsync(id);
+
+        if (actor == null) return View("NotFound"); //return NotFound();
 
         return View(actor);
     }
+
+    // GET: Actors/Edit/1
+    public async Task<IActionResult> Edit(int id)
+    {
+        var actor = await _actorsService.GetByIdAsync(id);
+
+        if (actor == null) return View("NotFound"); //return NotFound();
+
+        return View(actor);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(int id, Actor actor)
+    {
+        //ModelState.Remove("Actors_Movies");
+        if (ModelState.IsValid)
+        {
+            await _actorsService.UpdateAsync(id, actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(actor);
+    }
+
+
+    // GET: Actors/Delete/1
+    [HttpGet]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var actor = await _actorsService.GetByIdAsync(id);
+
+        if (actor == null) return View("NotFound"); //return NotFound();
+
+        return View(actor);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(Actor actor)
+    {
+        var actorInDb = await _actorsService.GetByIdAsync(actor.Id);
+
+        if (actorInDb == null) return View("NotFound"); //return NotFound();
+
+        await _actorsService.DeleteAsync(actor.Id);
+
+        return RedirectToAction(nameof(Index));
+    }
+
 }

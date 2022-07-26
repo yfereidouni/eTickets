@@ -1,16 +1,18 @@
 ﻿@model Actor
 
 @{
-    ViewData["Title"] = "Actor details";
+    ViewData["Title"] = "Delete actor";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Details for @Model.FullName</h1>
+            <h1>Delete Confirmation for @Model.FullName</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
+
+                <form class="" asp-controller="Actors" asp-action="Delete" method="post">
 
                     <div class="form-group text-center">
                         <img class="img-thumbnail rounded-circle" id="ProfilePicturePreview" />
@@ -32,10 +34,12 @@
                         <span asp-validation-for="Bio" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-outline-primary float-end mt-2" asp-controller="Actors" asp-action="Edit" asp-route-Id="@Model.Id">Edit</a>
+                        @*<input type="submit" value="Confirm Delete" class="Ubi bi-webcam btn btn-danger float-end mt-2" />*@
+                        <button type="submit" class="Ubi bi-webcam btn btn-danger float-end mt-2"><i class="bi bi-trash"></i> Confirm Delete</button>
                         <a class="btn btn-outline-secondary mt-2" asp-controller="Actors" asp-action="Index">Show All</a>
                     </div>
 
+                </form>
             </div>
         </div>
     </div>
@@ -56,4 +60,4 @@
 }
 
 
-@*https://www.dotnethow.net/images/actors/actor-2.jpeg*@
+    @*https://www.dotnethow.net/images/actors/actor-2.jpeg*@
