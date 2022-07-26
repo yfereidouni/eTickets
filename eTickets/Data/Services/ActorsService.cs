@@ -31,7 +31,8 @@ public class ActorsService : IActorsService
 
     public Actor GetById(int id)
     {
-        throw new NotImplementedException();
+        var actor = _context.Actors.Find(id);
+        return actor;
     }
 
     public void Update(int it, Actor newActor)

@@ -23,15 +23,31 @@ public class ActorsController : Controller
     // GET: Actors/Create
     public IActionResult Create()
     {
-        return View(new Actor());
+        return View();
     }
 
     [HttpPost]
-    public IActionResult Create(Actor actor)
+    public IActionResult Create([Bind("FullName,ProfilePictureURL,Bio")] Actor actor)
     {
-        _actorsService.Add(actor);
-        return RedirectToAction("Index");
+        //ModelState.Remove("Actors_Movies");
+        if (ModelState.IsValid)
+        {
+            _actorsService.Add(actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(actor);
     }
 
+    // GET: Actors/Details/1
+    [HttpGet]
+    public async Task<IActionResult> Details(int id)
+    {
+        var actor = _actorsService.GetById(id);
+        
+        if (actor == null) 
+            return View("Empty");
 
+        return View(actor);
+    }
 }
