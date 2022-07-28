@@ -18,6 +18,6 @@ public class Cinema: IEntityBase
     public string Description { get; set; }
 
     //Relationships
-    public List<Movie> Movies { get; set; }
+    public List<Movie>? Movies { get; set; }
     //public int MovieId { get; set; }
 }
