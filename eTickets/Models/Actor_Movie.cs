@@ -1,6 +1,8 @@
-﻿namespace eTickets.Models;
+﻿using eTickets.Data.Base;
 
-public class Actor_Movie
+namespace eTickets.Models;
+
+public class Actor_Movie: IEntityBase
 {
     public int Id { get; set; }
 

@@ -27,12 +27,12 @@ public class ActorsController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create([Bind("FullName,ProfilePictureURL,Bio")] Actor actor)
+    public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Actor actor)
     {
         //ModelState.Remove("Actors_Movies");
         if (ModelState.IsValid)
         {
-            _actorsService.AddAsync(actor);
+            await _actorsService.AddAsync(actor);
             return RedirectToAction(nameof(Index));
         }
 

@@ -2,9 +2,9 @@
 
 namespace eTickets.Models;
 
-public class Producer
+public class Producer: Data.Base.IEntityBase
 {
-    //[Key]
+    [Key]
     public int Id { get; set; }
 
     [Display(Name = "Profile Picture")]
