@@ -17,6 +17,6 @@ public class Producer: Data.Base.IEntityBase
     public string Bio { get; set; }
 
     //Relationships
-    public List<Movie> Movies { get; set; }
+    public List<Movie>? Movies { get; set; }
     //public int MovieId { get; set; }
 }

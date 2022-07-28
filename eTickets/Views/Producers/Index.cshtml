@@ -8,7 +8,7 @@
     <div class="col-md-8 offset-md-2">
         <table class="table">
             <thead>
-                <tr class="text-center">                    
+                <tr class="text-center">
                     <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
                     <th>@Html.DisplayNameFor(model => model.FullName)</th>
                     <th>@Html.DisplayNameFor(model => model.Bio)</th>
@@ -20,7 +20,7 @@
                 {
                     <tr>
                         <td class="align-middle">
-                            <img class="img-thumbnail rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width:150px;" >
+                            <img class="img-thumbnail rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width:150px;">
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.FullName)
@@ -29,13 +29,17 @@
                             @Html.DisplayFor(modelItem => item.Bio)
                         </td>
                         <td class="align-middle">
-                            <a class="btn btn-outline-primary mb-2 mr-2"><i class="bi bi-pencil-square"></i> Edit</a>
-                            <a class="btn btn-outline-info mb-2 mr-2"><i class="bi bi-eye"></i> Display</a>
-                            <a class="btn btn-outline-danger mb-2 mr-2"><i class="bi bi-trash"></i> Delete</a>
+                            <a asp-controller="Producers" asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-outline-primary mb-2 mr-2"><i class="bi bi-pencil-square"></i> Edit</a>
+                            <a asp-controller="Producers" asp-action="Details" asp-route-Id="@item.Id" class="btn btn-outline-info mb-2 mr-2"><i class="bi bi-eye"></i> Display</a>
+                            <a asp-controller="Producers" asp-action="Delete" asp-route-Id="@item.Id" class="btn btn-outline-danger mb-2 mr-2"><i class="bi bi-trash"></i> Delete</a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
+</div>
+
+<div style="float:right; position:absolute; right:2vw; bottom:3vh;" class="position-sticky fixed-bottom text-white">
+    <a asp-controller="Producers" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add New</a>
 </div>
