@@ -40,7 +40,10 @@
     </div>
 </div>
 
-<div style="float:right; position:absolute; right:2vw; bottom:3vh;" class="position-sticky fixed-bottom text-white">
+@*<div style="float:right; position:absolute; right:2vw; bottom:3vh;" class="position-sticky fixed-bottom text-white">
     <a asp-controller="Actors" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add New</a>
-</div>
+</div>*@
+
+@await Html.PartialAsync("_CreateItem","Actors")
+
 
