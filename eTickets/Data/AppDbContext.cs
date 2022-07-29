@@ -1,4 +1,5 @@
-﻿using eTickets.Models;
+﻿using eTickets.Data.ViewModels;
+using eTickets.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Data;

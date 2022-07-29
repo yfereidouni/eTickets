@@ -1,4 +1,5 @@
 ﻿using eTickets.Data.Enums;
+using eTickets.Data.ViewModels;
 using eTickets.Models;
 
 namespace eTickets.Data;
