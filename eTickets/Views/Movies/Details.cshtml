@@ -74,7 +74,8 @@
                 <div class="col-md-12">
                     <div class="card-footer ">
                         <p class="card-text">
-                            <a class="btn btn-success text-white float-left">
+                            <a  asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id" 
+                                class="btn btn-success text-white float-left">
                                 <i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))
                             </a>
                             <a asp-controller="Movies" asp-action="Index" class="btn btn-outline-primary float-end">

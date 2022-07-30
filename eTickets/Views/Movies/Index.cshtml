@@ -51,7 +51,7 @@
                     <div class="col-md-12">
                         <div class="card-footer ">
                             <p class="card-text">
-                                <a class="btn btn-success text-white float-left"><i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
+                                <a asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id" class="btn btn-success text-white float-left"><i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
                                 <a asp-controller="Movies" asp-action="Details" asp-route-Id="@item.Id" class="btn btn-outline-primary float-end"><i class="bi bi-eye-fill"></i> Details</a>
                             </p>
                         </div>
