@@ -30,7 +30,7 @@ public class ShoppingCart
     public void AddItemToCart(Movie movie)
     {
         var shoppingCartItem = _context.ShoppingCartItems
-            .FirstOrDefault(n => n.Id == movie.Id && n.ShoppingCartId == ShoppingCartId);
+            .FirstOrDefault(n => n.Movie.Id == movie.Id && n.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem == null)
         {
@@ -54,7 +54,7 @@ public class ShoppingCart
     public void RemoveItemFromCart(Movie movie)
     {
         var shoppingCartItem = _context.ShoppingCartItems
-            .FirstOrDefault(n => n.Id == movie.Id && n.ShoppingCartId == ShoppingCartId);
+            .FirstOrDefault(n => n.Movie.Id == movie.Id && n.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem != null)
         {
