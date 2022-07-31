@@ -66,7 +66,6 @@ public class ShoppingCart
             {
                 _context.ShoppingCartItems.Remove(shoppingCartItem);
             }
-
         }
         _context.SaveChanges();
     }
