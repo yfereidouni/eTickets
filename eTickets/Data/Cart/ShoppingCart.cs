@@ -83,4 +83,15 @@ public class ShoppingCart
         .Select(n => n.Movie.Price * n.Amount)
         .Sum();
 
+    
+    public async Task ClearShoppingCartAsync()
+    {
+        var items= _context.ShoppingCartItems
+            .Where(n => n.ShoppingCartId == ShoppingCartId)
+            .ToList();
+
+        _context.ShoppingCartItems.RemoveRange(items);
+        await _context.SaveChangesAsync();
+    }
+
 }
