@@ -54,5 +54,10 @@ public class OrdersController : Controller
         return RedirectToAction(nameof(ShoppingCart));
     }
 
+    public IActionResult CompleteOrder()
+    {
+        var items = _shoppingCart.GetShoppingCartItems();
+        strin
+    }
 
 }

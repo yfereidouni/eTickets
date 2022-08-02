@@ -13,6 +13,8 @@ builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
+builder.Services.AddScoped<IOrdersService, OrdersService>();
+
 
 //Activating Session in app
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
