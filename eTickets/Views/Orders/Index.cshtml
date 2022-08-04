@@ -30,14 +30,14 @@
                                 {
                                     <li>
                                         <div class="alert alert-info" role="alert">
-                                            <span class="badge bg-success">@item.Amount</span> [@item.Price.ToString("c")] - @item.Movie.Name
+                                            <span class="badge bg-success">@item.Amount</span> [@item.Price.ToString("c")] - <b>@item.Movie.Name</b> <span style="float:right;">[@item.Price.ToString("c")]</span>
                                         </div>
                                     </li>
                                 }
                             </ul>
                         </td>
                         <td class="align-middle">
-                            @order.OrderItems.Select(m=>m.Movie.Price * m.Amount).Sum().ToString("c")
+                            <h4><span class="badge bg-success">@order.OrderItems.Select(m=>m.Movie.Price * m.Amount).Sum().ToString("c")</span></h4>                        
                         </td>
                         <td class="align-middle"> - </td>
                     </tr>
