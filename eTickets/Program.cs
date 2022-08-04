@@ -35,7 +35,8 @@ using (var scope = app.Services.CreateScope())
     context.Database.Migrate();
 }
 //SeedDatabase ----------------------------------------------------------------------
-await AppDBInitializer.Seed(app);
+await AppDBInitializer.SeedingMasterDataAsync(app);
+await AppDBInitializer.SeedingUsersAndRolesAsync(app);
 //-----------------------------------------------------------------------------------
 
 // Configure the HTTP request pipeline.
