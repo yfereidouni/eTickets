@@ -65,7 +65,7 @@ public class OrdersController : Controller
         return RedirectToAction(nameof(ShoppingCart));
     }
 
-    public async Task<IActionResult> CompleteOrder()
+    public async Task<IActionResult> OrderCompleted()
     {
         var items = _shoppingCart.GetShoppingCartItems();
         string userId = "";

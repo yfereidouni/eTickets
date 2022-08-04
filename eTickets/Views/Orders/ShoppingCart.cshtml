@@ -30,12 +30,13 @@
                         <td class="align-middle">@item.Movie.Price.ToString("c")</td>
                         <td class="align-middle">@((item.Amount * item.Movie.Price).ToString("c"))</td>
                         <td class="align-middle">
-                            <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" 
-                                asp-route-id="@item.Movie.Id">
-                                <i class="bi bi-cart-dash"></i></a>
+                            <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart"
+                           asp-route-id="@item.Movie.Id">
+                                <i class="bi bi-cart-dash"></i>
+                            </a>
                             |
-                            <a class="text-success" asp-controller="Orders" asp-action="AddItemToShoppingCart" 
-                                asp-route-id="@item.Movie.Id">
+                            <a class="text-success" asp-controller="Orders" asp-action="AddItemToShoppingCart"
+                           asp-route-id="@item.Movie.Id">
                                 <i class="bi bi-cart-plus"></i>
                             </a>
                         </td>
@@ -54,11 +55,14 @@
             </tfoot>
         </table>
 
-        <div class="text-center">
+        <div class="text-end">
             <div class="btn-group">
-                <a class="btn btn-outline-primary" asp-controller="Orders" asp-action="CompleteOrder">
-                    Complete Order
-                </a>
+                @*<a class="btn btn-outline-primary" asp-controller="Orders" asp-action="CompleteOrder">
+                Complete Order
+                </a>*@
+                <div id="paypal-btn"></div>
+                <span style="padding:2px;"></span>
+
                 <a class="btn btn-outline-success" asp-controller="Movies" asp-action="Index">
                     Add more items
                 </a>
@@ -67,3 +71,55 @@
 
     </div>
 </div>
+
+@section Scripts{
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+    <script>
+
+        let _total = @Html.Raw(@Model.ShoppingCartTotal)
+
+            paypal.Button.render({
+                //Configure environment
+                env: 'sandbox',
+                client: {
+                    sandbox: 'AQmNFvtrBAYFKO5y8PadObsjwVFwnxUStdccNR8P474kN26WycufHJvBmCaNJ6TUPvZQEKH90qF717d5'
+                },
+                // Customize button
+                local: 'en_US',
+                style: {
+                    size: 'small',
+                    //size: 'medium',
+                    color: 'gold',
+                    //color: 'silver',
+                    //color: 'white',
+                    //color: 'black',
+                    //shape: 'pill',
+                    shape: 'rect',
+                    //layout:'vertical'
+                    //layout: 'horizontal'
+                },
+                commit: true,
+
+                //setup a payment
+                payment: function(data, actions) {
+                    return actions.payment.create({
+                        transactions: [{
+                            amount: {
+                                total: _total,
+                                currency: 'USD'
+                            }
+                        }]
+                    })
+                },
+
+                //execute payment
+                onAuthorize: function(data, actions) {
+                    return actions.payment.execute().then(function() {
+                        var url = '@Url.Action("OrderCompleted","Orders",new {})'
+                        window.location.href = url;
+                    });
+                }
+            }, 'paypal-btn');
+    </script>
+}
