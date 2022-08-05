@@ -1,7 +1,12 @@
-﻿@model string;
+﻿@using Microsoft.AspNetCore.Identity
 
-<div style="float:right; position:absolute; right:2vw; bottom:3vh;" class="position-sticky fixed-bottom text-white">
-    <a asp-controller="@Model" asp-action="Create" class="btn btn-success">
-        <i class="bi bi-plus-circle"></i> Add New
-    </a>
-</div>
+@model string;
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div style="float:right; position:absolute; right:2vw; bottom:3vh;" class="position-sticky fixed-bottom text-white">
+        <a asp-controller="@Model" asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add New
+        </a>
+    </div>
+}      

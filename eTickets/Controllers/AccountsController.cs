@@ -4,6 +4,7 @@ using eTickets.Data.ViewModels;
 using eTickets.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Controllers;
 
@@ -20,6 +21,12 @@ public class AccountsController : Controller
         _userManager = userManager;
         _signInManager = signInManager;
         _context = context;
+    }
+
+    public async Task<IActionResult> Users()
+    {
+        var users = await _context.Users.ToListAsync();
+        return View(users);
     }
 
     public IActionResult Login() => View(new LoginVM());
@@ -97,6 +104,12 @@ public class AccountsController : Controller
         //If response was NOT success we should create modelError here
 
         return View("RegisterCompleted", registerVM);
+    }
+
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Movies");
     }
 
 }

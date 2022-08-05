@@ -12,29 +12,32 @@
         <div class="row">
             <div class="col-md-8 offset-2">
 
-                    <div class="form-group text-center">
-                        <img class="img-thumbnail rounded-circle" id="ProfilePicturePreview" />
-                    </div>
+                <div class="form-group text-center">
+                    <img class="img-thumbnail rounded-circle" id="ProfilePicturePreview" />
+                </div>
 
-                    <div class="form-group">
-                        <label asp-for="ProfilePictureURL" class="control-lable"></label>
-                        <input asp-for="ProfilePictureURL" class="form-control" readonly />
-                        <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="FullName" class="control-lable"></label>
-                        <input asp-for="FullName" class="form-control" readonly />
-                        <span asp-validation-for="FullName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Bio" class="control-lable"></label>
-                        <input asp-for="Bio" class="form-control" readonly />
-                        <span asp-validation-for="Bio" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="ProfilePictureURL" class="control-lable"></label>
+                    <input asp-for="ProfilePictureURL" class="form-control" readonly />
+                    <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-lable"></label>
+                    <input asp-for="FullName" class="form-control" readonly />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Bio" class="control-lable"></label>
+                    <input asp-for="Bio" class="form-control" readonly />
+                    <span asp-validation-for="Bio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
                         <a class="btn btn-outline-primary float-end mt-2" asp-controller="Producers" asp-action="Edit" asp-route-Id="@Model.Id">Edit</a>
-                        <a class="btn btn-outline-secondary mt-2" asp-controller="Producers" asp-action="Index">Show All</a>
-                    </div>
+                    }
+                    <a class="btn btn-outline-secondary mt-2" asp-controller="Producers" asp-action="Index">Show All</a>
+                </div>
 
             </div>
         </div>
@@ -56,4 +59,4 @@
 }
 
 
-@*https://www.dotnethow.net/images/actors/actor-2.jpeg*@
+    @*https://www.dotnethow.net/images/actors/actor-2.jpeg*@

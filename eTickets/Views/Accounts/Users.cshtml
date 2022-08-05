@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Actor>
+﻿@model IEnumerable<ApplicationUser>
 
 @{
-    ViewData["Title"] = "List of Actors";
+    ViewData["Title"] = "List of all users";
 }
 
 <div class="row">
@@ -9,9 +9,9 @@
         <table class="table">
             <thead>
                 <tr class="text-center">
-                    <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
                     <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Bio)</th>
+                    <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <th>Actions</th>
@@ -23,14 +23,15 @@
                 {
                     <tr>
                         <td class="align-middle">
-                            <img class="img-thumbnail rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width:150px;">
-                        </td>
-                        <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.FullName)
+                        </td>                       
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.UserName)
                         </td>
                         <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Bio)
+                            @Html.DisplayFor(modelItem => item.Email)
                         </td>
+
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <td class="align-middle">
@@ -49,7 +50,3 @@
 @*<div style="float:right; position:absolute; right:2vw; bottom:3vh;" class="position-sticky fixed-bottom text-white">
     <a asp-controller="Actors" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add New</a>
 </div>*@
-
-@await Html.PartialAsync("_CreateItem","Actors")
-
-

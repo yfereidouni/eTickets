@@ -3,6 +3,11 @@
         <h2>Order Completed successfully</h2>
         <p>You can check your orders in the Order section of your profile</p>
         <hr />
-        <p>Thank you!</p>
+        <p class="d-inline">
+            Thank you!
+            <a class="btn btn-outline-success" asp-controller="Orders" asp-action="Index">
+                <i class="bi bi-box-arrow-in-right"></i> List of orders
+            </a>
+        </p>
     </div>
 </div>
