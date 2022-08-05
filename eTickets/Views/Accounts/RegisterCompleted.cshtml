@@ -1,0 +1,16 @@
+﻿@using eTickets.Data.ViewModels
+@model RegisterVM
+
+<div class="row">
+    <div class="col-md-6 offset-3 alert alert-success text-center">
+        <h2>Your account was created successfully</h2>
+        <p>You can now log in to your account using your credentials.</p>
+        <hr />
+        <p class="d-inline">
+            Thank you!
+            <a class="btn btn-outline-success" asp-controller="Accounts" asp-action="LoginWithDefaulValues" asp-route-emailaddress="@Model.EmailAddress">
+                <i class="bi bi-box-arrow-in-right"></i> Login to your account
+            </a>
+        </p>
+    </div>
+</div>

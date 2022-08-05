@@ -1,13 +1,13 @@
 ﻿@using eTickets.Data.ViewModels
-@model LoginVM
+@model RegisterVM
 
 @{
-    ViewData["Title"] = "Login to your account";
+    ViewData["Title"] = "Sign-up for a new account";
 }
 <div class="row">
     <div class="col-md-6 offset-3">
         <p>
-            <h4>Login to your account</h4>
+            <h4>Sign-up for a new account</h4>
         </p>
 
         @if (TempData["Error"] != null)
@@ -19,8 +19,14 @@
 
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-controller="Accounts" asp-action="Login" method="post">
+                <form asp-controller="Accounts" asp-action="Register" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-lable"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
 
                     <div class="form-group">
                         <label asp-for="EmailAddress" class="control-lable"></label>
@@ -34,8 +40,14 @@
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
 
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="control-lable"></label>
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
                     <div class="form-group mt-2">
-                        <input class="btn btn-outline-success float-end" type="submit" value="Login" />
+                        <input class="btn btn-outline-success float-end" type="submit" value="Sign-up" />
                         <a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index">Cancel</a>
                     </div>
 

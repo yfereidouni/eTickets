@@ -48,10 +48,17 @@
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
 
+                    @*Login & Register Button -------------------------------------*@
                     <a class="btn btn-outline-success my-2 my-sm-0 me-1" asp-controller="Accounts" asp-action="Login">
                         <i class="bi bi-box-arrow-in-right"></i> Login
                     </a>
-                    @*User Profile Section ---------------------------*@
+
+                    <a class="btn btn-outline-primary my-2 my-sm-0 me-1" asp-controller="Accounts" asp-action="Register">
+                        <i class="bi bi-person-plus"></i> Register
+                    </a>
+                    @*--------------------------------------------------*@
+
+                    @*User Profile Section -----------------------------*@
                     <div class="dropdown">
                         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
                         aria-expanded="false">
