@@ -18,6 +18,10 @@
 
   <ItemGroup>
     <Folder Include="Data\ViewComponents\" />
+    <Folder Include="wwwroot\images\cinemas\" />
+    <Folder Include="wwwroot\images\actors\" />
+    <Folder Include="wwwroot\images\movies\" />
+    <Folder Include="wwwroot\images\producers\" />
   </ItemGroup>
 
 </Project>
